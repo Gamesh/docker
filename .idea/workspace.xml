@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dc75a3f2-89b3-4406-ba74-51e9c518cd7a" name="Default Changelist" comment="" />
+    <list default="true" id="dc75a3f2-89b3-4406-ba74-51e9c518cd7a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php7.2/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/php7.2/Dockerfile" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,13 +17,18 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1QBQmq55h7JAsJH749YCaEaXnAi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/php7.3" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -59,11 +69,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
-                <item name="Images" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -80,7 +85,7 @@
       <updated>1567241670090</updated>
       <workItem from="1567241671221" duration="136000" />
       <workItem from="1567241829568" duration="1152000" />
-      <workItem from="1576789116571" duration="289000" />
+      <workItem from="1576789116571" duration="2477000" />
     </task>
     <servers />
   </component>
@@ -92,9 +97,9 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="320" y="104" key="#Push_Image/0.23.1440.877@0.23.1440.877" timestamp="1576789404807" />
-    <state x="427" y="25" key="#php7.2/Dockerfile" timestamp="1576789211902">
+    <state x="427" y="25" key="#php7.2/Dockerfile" timestamp="1576789696102">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="427" y="25" key="#php7.2/Dockerfile/0.23.1440.877@0.23.1440.877" timestamp="1576789211902" />
+    <state x="427" y="25" key="#php7.2/Dockerfile/0.23.1440.877@0.23.1440.877" timestamp="1576789696102" />
   </component>
 </project>
