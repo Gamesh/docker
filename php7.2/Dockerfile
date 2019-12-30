@@ -1,5 +1,5 @@
-# Build: docker build -t gamesh/gamesh:php-7.2 .
-# Publish: docker push gamesh/gamesh:php-7.2
+# Build: docker build -t gamesh/php:7.2 .
+# Publish: docker push gamesh/php:7.2
 FROM php:7.2-apache
 
 RUN apt-get update && apt-get install -y \

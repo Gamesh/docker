@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc75a3f2-89b3-4406-ba74-51e9c518cd7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php7.2/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/php7.2/Dockerfile" afterDir="false" />
@@ -53,11 +52,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Docker.php7.2/Dockerfile" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -68,6 +62,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="Images" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -85,21 +84,41 @@
       <updated>1567241670090</updated>
       <workItem from="1567241671221" duration="136000" />
       <workItem from="1567241829568" duration="1152000" />
-      <workItem from="1576789116571" duration="2477000" />
+      <workItem from="1576789116571" duration="2518000" />
+      <workItem from="1576833421570" duration="602000" />
+      <workItem from="1577731385330" duration="114000" />
     </task>
+    <task id="LOCAL-00001" summary="added unzip for composer">
+      <created>1576832585443</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576832585444</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added unzip for composer" />
+    <option name="LAST_COMMIT_MESSAGE" value="added unzip for composer" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="320" y="104" key="#Push_Image" timestamp="1576789404807">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="320" y="100" key="#Push_Image" timestamp="1577731498300">
+      <screen x="0" y="23" width="1440" height="829" />
     </state>
+    <state x="320" y="100" key="#Push_Image/0.23.1440.829@0.23.1440.829" timestamp="1577731498300" />
     <state x="320" y="104" key="#Push_Image/0.23.1440.877@0.23.1440.877" timestamp="1576789404807" />
-    <state x="427" y="25" key="#php7.2/Dockerfile" timestamp="1576789696102">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="427" y="25" key="#php7.2/Dockerfile" timestamp="1577731465568">
+      <screen x="0" y="23" width="1440" height="829" />
     </state>
+    <state x="427" y="25" key="#php7.2/Dockerfile/0.23.1440.829@0.23.1440.829" timestamp="1577731465568" />
     <state x="427" y="25" key="#php7.2/Dockerfile/0.23.1440.877@0.23.1440.877" timestamp="1576789696102" />
+    <state x="312" y="336" key="CommitChangelistDialog2" timestamp="1576832585234">
+      <screen x="0" y="23" width="1920" height="1129" />
+    </state>
+    <state x="312" y="336" key="CommitChangelistDialog2/-2560.23.2560.1417/0.23.1920.1129@0.23.1920.1129" timestamp="1576832585234" />
   </component>
 </project>

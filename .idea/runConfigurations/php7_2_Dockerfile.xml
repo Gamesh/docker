@@ -7,7 +7,7 @@
         <option name="command" value="" />
         <option name="containerName" value="" />
         <option name="entrypoint" value="" />
-        <option name="imageTag" value="gamesh/gamesh:php-7.2" />
+        <option name="imageTag" value="gamesh/php:7.2" />
         <option name="commandLineOptions" value="" />
         <option name="sourceFilePath" value="php7.2/Dockerfile" />
       </settings>
