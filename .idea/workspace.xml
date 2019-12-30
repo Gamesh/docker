@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc75a3f2-89b3-4406-ba74-51e9c518cd7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/php7.2/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/php7.2/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,7 @@
       <workItem from="1567241829568" duration="1152000" />
       <workItem from="1576789116571" duration="2518000" />
       <workItem from="1576833421570" duration="602000" />
-      <workItem from="1577731385330" duration="114000" />
+      <workItem from="1577731385330" duration="1367000" />
     </task>
     <task id="LOCAL-00001" summary="added unzip for composer">
       <created>1576832585443</created>
@@ -95,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576832585444</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="made php public image">
+      <created>1577731540653</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577731540653</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,22 +110,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added unzip for composer" />
-    <option name="LAST_COMMIT_MESSAGE" value="added unzip for composer" />
+    <MESSAGE value="made php public image" />
+    <option name="LAST_COMMIT_MESSAGE" value="made php public image" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="320" y="100" key="#Push_Image" timestamp="1577731498300">
+    <state x="320" y="100" key="#Push_Image" timestamp="1577733027235">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
-    <state x="320" y="100" key="#Push_Image/0.23.1440.829@0.23.1440.829" timestamp="1577731498300" />
+    <state x="320" y="100" key="#Push_Image/0.23.1440.829@0.23.1440.829" timestamp="1577733027235" />
     <state x="320" y="104" key="#Push_Image/0.23.1440.877@0.23.1440.877" timestamp="1576789404807" />
     <state x="427" y="25" key="#php7.2/Dockerfile" timestamp="1577731465568">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
     <state x="427" y="25" key="#php7.2/Dockerfile/0.23.1440.829@0.23.1440.829" timestamp="1577731465568" />
     <state x="427" y="25" key="#php7.2/Dockerfile/0.23.1440.877@0.23.1440.877" timestamp="1576789696102" />
-    <state x="312" y="336" key="CommitChangelistDialog2" timestamp="1576832585234">
-      <screen x="0" y="23" width="1920" height="1129" />
+    <state x="234" y="23" key="CommitChangelistDialog2" timestamp="1577731540497">
+      <screen x="0" y="23" width="1440" height="829" />
     </state>
     <state x="312" y="336" key="CommitChangelistDialog2/-2560.23.2560.1417/0.23.1920.1129@0.23.1920.1129" timestamp="1576832585234" />
+    <state x="234" y="23" key="CommitChangelistDialog2/0.23.1440.829@0.23.1440.829" timestamp="1577731540497" />
+    <state x="320" y="179" key="Vcs.Push.Dialog.v2" timestamp="1577731544349">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="320" y="179" key="Vcs.Push.Dialog.v2/0.23.1440.829@0.23.1440.829" timestamp="1577731544349" />
   </component>
 </project>

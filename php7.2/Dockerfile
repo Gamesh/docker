@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
         zlib1g-dev \
         libicu-dev \
         g++ \
-        unzip
+        unzip \
+        openssh-client
 RUN docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) exif \
     && docker-php-ext-configure intl \
