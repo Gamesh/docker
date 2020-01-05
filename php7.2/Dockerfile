@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
         libicu-dev \
         g++ \
         unzip \
-        openssh-client
+        openssh-client \
+        git \
+        git-lfs
 RUN docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) exif \
     && docker-php-ext-configure intl \
@@ -22,6 +24,11 @@ RUN docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-source delete \
     && apt-get clean && apt-get autoclean -y && apt-get autoremove -y \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
+  && . /root/.bashrc \
+  && nvm install lts/* \
+  && nvm cache clear
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html
 
