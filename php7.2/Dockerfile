@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
         unzip \
         openssh-client \
         git \
-        git-lfs
+        git-lfs \
+        nano
+
 RUN docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) exif \
     && docker-php-ext-configure intl \
@@ -22,6 +24,7 @@ RUN docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) opcache \
     && docker-php-ext-install -j$(nproc) zip \
     && docker-php-source delete \
+    && pecl install xdebug \
     && apt-get clean && apt-get autoclean -y && apt-get autoremove -y \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -36,4 +39,6 @@ RUN a2enmod rewrite \
   && mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
   && echo 'date.timezone = Europe/Vilnius' >> "$PHP_INI_DIR/php.ini" \
   && echo 'memory_limit = 512M' >> "$PHP_INI_DIR/php.ini" \
+  && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
+  && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini" \
   && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
