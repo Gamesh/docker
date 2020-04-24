@@ -8,14 +8,14 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
         zlib1g-dev \
         libicu-dev \
+        libzip-dev \
         g++ \
         unzip \
         openssh-client \
         git \
         git-lfs \
-        nano
-
-RUN docker-php-ext-install -j$(nproc) pdo_mysql \
+        nano \
+    && docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) exif \
     && docker-php-ext-configure intl \
     && docker-php-ext-install -j$(nproc) intl \
@@ -23,10 +23,13 @@ RUN docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install -j$(nproc) opcache \
     && docker-php-ext-install -j$(nproc) zip \
-    && docker-php-source delete \
     && pecl install xdebug \
-    && apt-get clean && apt-get autoclean -y && apt-get autoremove -y \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && docker-php-source delete \
+    && pecl clear-cache \
+    && apt-get purge -y --auto-remove g++ make libzip-dev \
+    && apt-get clean && apt-get autoclean -y && apt-get autoremove -y
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
   && . /root/.bashrc \
@@ -34,10 +37,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | b
   && nvm cache clear
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html
+ENV PHP_DATE_TIMEZONE Europe/Vilnius
 
 RUN a2enmod rewrite \
   && mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
-  && echo 'date.timezone = Europe/Vilnius' >> "$PHP_INI_DIR/php.ini" \
+  && echo "date.timezone = $PHP_DATE_TIMEZONE" >> "$PHP_INI_DIR/php.ini" \
   && echo 'memory_limit = 512M' >> "$PHP_INI_DIR/php.ini" \
   && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
   && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini" \
