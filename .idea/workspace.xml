@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc75a3f2-89b3-4406-ba74-51e9c518cd7a" name="Default Changelist" comment="added nano and xdebug">
+    <list default="true" id="dc75a3f2-89b3-4406-ba74-51e9c518cd7a" name="Default Changelist" comment="stripped down images">
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/php7_2_Dockerfile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php7.2/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/php7.2/Dockerfile" afterDir="false" />
@@ -60,7 +60,7 @@
       <recent name="$PROJECT_DIR$/php7.3" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.php7.3/Dockerfile">
+  <component name="RunManager" selected="Docker.php7.2/Dockerfile">
     <configuration name="node/Dockerfile" type="docker-deploy" factoryName="dockerfile">
       <deployment type="dockerfile">
         <settings>
@@ -74,7 +74,6 @@
         <settings>
           <option name="imageTag" value="gamesh/php:7.2" />
           <option name="buildCliOptions" value="" />
-          <option name="buildOnly" value="true" />
           <option name="command" value="" />
           <option name="containerName" value="" />
           <option name="entrypoint" value="" />
@@ -105,7 +104,9 @@
       <workItem from="1578091088493" duration="87000" />
       <workItem from="1578235441212" duration="1348000" />
       <workItem from="1579640881846" duration="155000" />
-      <workItem from="1587707906560" duration="4410000" />
+      <workItem from="1587707906560" duration="4577000" />
+      <workItem from="1587723723922" duration="304000" />
+      <workItem from="1589918657774" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="added unzip for composer">
       <created>1576832585443</created>
@@ -142,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587708278657</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="stripped down images">
+      <created>1587713301978</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587713301978</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +166,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added unzip for composer" />
@@ -165,13 +174,15 @@
     <MESSAGE value="added openssl-client to provide ssh-add" />
     <MESSAGE value="added git, git-lfs and nvm + node to php 7.2" />
     <MESSAGE value="added nano and xdebug" />
-    <option name="LAST_COMMIT_MESSAGE" value="added nano and xdebug" />
+    <MESSAGE value="stripped down images" />
+    <option name="LAST_COMMIT_MESSAGE" value="stripped down images" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="320" y="100" key="#Push_Image" timestamp="1587708371971">
+    <state x="320" y="100" key="#Push_Image" timestamp="1589919432119">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
     <state x="320" y="100" key="#Push_Image/0.23.1440.829@0.23.1440.829" timestamp="1587708371971" />
+    <state x="320" y="100" key="#Push_Image/1440.-356.1920.1057/0.23.1440.829@0.23.1440.829" timestamp="1589919432119" />
     <state x="417" y="23" key="#php7.2/Dockerfile" timestamp="1587709061976">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
