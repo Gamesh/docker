@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
     && pecl install xdebug \
     && docker-php-source delete \
     && pecl clear-cache \
-    && apt-get purge -y --auto-remove g++ make libzip-dev libxslt-dev \
+    && apt-get purge -y --auto-remove g++ make \
     && apt-get clean && apt-get autoclean -y && apt-get autoremove -y
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
