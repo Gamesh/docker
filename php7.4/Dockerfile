@@ -16,16 +16,10 @@ RUN apt-get update && apt-get install -y \
         git \
         git-lfs \
         nano \
-    && docker-php-ext-install -j$(nproc) pdo_mysql \
-    && docker-php-ext-install -j$(nproc) exif \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install -j$(nproc) intl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install -j$(nproc) opcache \
-    && docker-php-ext-install -j$(nproc) zip \
     && docker-php-ext-configure xsl \
-    && docker-php-ext-install -j$(nproc) xsl \
+    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl \
     && pecl install xdebug \
     && docker-php-source delete \
     && pecl clear-cache \
