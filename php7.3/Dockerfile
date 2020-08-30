@@ -45,3 +45,5 @@ RUN a2enmod rewrite \
   && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
   && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini" \
   && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+
+WORKDIR $APACHE_DOCUMENT_ROOT
