@@ -28,7 +28,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf \
     && pecl clear-cache \
     && apk del --purge buildDeps
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2
 
 ENV PHP_DATE_TIMEZONE Europe/Vilnius
 ENV PHP_MEMORY_LIMIT=1G
