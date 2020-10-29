@@ -1,27 +1,29 @@
-# Build: docker build -t gamesh/php:7.3 .
-# Publish: docker push gamesh/php:7.3
-FROM php:7.3-apache
+# Build: docker build -t gamesh/php:7.4-cli .
+# Publish: docker push gamesh/php:7.4-cli
+FROM php:7.4-cli-alpine
 
-ENV APACHE_DOCUMENT_ROOT=/var/www/html
 ENV PHP_DATE_TIMEZONE=Europe/Vilnius
-ENV PHP_MEMORY_LIMIT=1G
+ENV PHP_MEMORY_LIMIT=-1
 ENV COMPOSER_MEMORY_LIMIT=-1
 ENV COMPOSER_VERSION=2
 
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
+RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf \
+    && apk add --no-cache --update --clean-protected bash \
+        freetype-dev \
+        libjpeg-turbo-dev \
         libpng-dev \
-        zlib1g-dev \
-        libicu-dev \
+        zlib-dev \
+        icu-dev \
         libzip-dev \
         libxslt-dev \
-        g++ \
         unzip \
+        zip \
+        rsync \
         openssh-client \
         git \
         git-lfs \
         nano \
+        nodejs \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-configure xsl \
@@ -29,22 +31,13 @@ RUN apt-get update && apt-get install -y \
     && pecl install xdebug \
     && docker-php-source delete \
     && pecl clear-cache \
-    && apt-get purge -y --auto-remove g++ make \
-    && apt-get clean && apt-get autoclean -y && apt-get autoremove -y
+    && apk del --purge buildDeps
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
-  && . /root/.bashrc \
-  && nvm install lts/* \
-  && nvm cache clear
 
-RUN a2enmod rewrite \
-  && mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
   && echo "date.timezone = $PHP_DATE_TIMEZONE" >> "$PHP_INI_DIR/php.ini" \
   && echo "memory_limit = $PHP_MEMORY_LIMIT" >> "$PHP_INI_DIR/php.ini" \
   && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
-  && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini" \
-  && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-
-WORKDIR $APACHE_DOCUMENT_ROOT
+  && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini"

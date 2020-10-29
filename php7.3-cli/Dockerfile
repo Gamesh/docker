@@ -2,6 +2,11 @@
 # Publish: docker push gamesh/php:7.3-cli
 FROM php:7.3-cli-alpine
 
+ENV PHP_DATE_TIMEZONE=Europe/Vilnius
+ENV PHP_MEMORY_LIMIT=-1
+ENV COMPOSER_MEMORY_LIMIT=-1
+ENV COMPOSER_VERSION=2
+
 RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf \
     && apk add --no-cache --update --clean-protected bash \
         freetype-dev \
@@ -28,11 +33,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf \
     && pecl clear-cache \
     && apk del --purge buildDeps
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2
-
-ENV PHP_DATE_TIMEZONE Europe/Vilnius
-ENV PHP_MEMORY_LIMIT=1G
-ENV COMPOSER_MEMORY_LIMIT=-1
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
   && echo "date.timezone = $PHP_DATE_TIMEZONE" >> "$PHP_INI_DIR/php.ini" \

@@ -2,6 +2,12 @@
 # Publish: docker push gamesh/php:7.4
 FROM php:7.4-apache
 
+ENV APACHE_DOCUMENT_ROOT=/var/www/html
+ENV PHP_DATE_TIMEZONE=Europe/Vilnius
+ENV PHP_MEMORY_LIMIT=1G
+ENV COMPOSER_MEMORY_LIMIT=-1
+ENV COMPOSER_VERSION=2
+
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -26,17 +32,12 @@ RUN apt-get update && apt-get install -y \
     && apt-get purge -y --auto-remove g++ make \
     && apt-get clean && apt-get autoclean -y && apt-get autoremove -y
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
   && . /root/.bashrc \
   && nvm install lts/* \
   && nvm cache clear
-
-ENV APACHE_DOCUMENT_ROOT /var/www/html
-ENV PHP_DATE_TIMEZONE Europe/Vilnius
-ENV PHP_MEMORY_LIMIT=1G
-ENV COMPOSER_MEMORY_LIMIT=-1
 
 RUN a2enmod rewrite \
   && mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
