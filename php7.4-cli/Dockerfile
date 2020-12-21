@@ -11,22 +11,22 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && apk add --no-cache --update --clean-protected bash \
         freetype-dev \
-        libjpeg-turbo-dev \
-        libpng-dev \
-        zlib-dev \
-        icu-dev \
-        libzip-dev \
-        libxslt-dev \
-        unzip \
-        zip \
-        rsync \
-        openssh-client \
         git \
         git-lfs \
+        icu-dev \
+        libjpeg-turbo-dev \
+        libmemcached-libs \
+        libpng-dev \
+        libxslt-dev \
+        libzip-dev \
         nano \
         nodejs \
+        openssh-client \
+        rsync \
+        unzip \
+        zip \
         zlib \
-        libmemcached-libs \
+        zlib-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd \
     && docker-php-ext-configure xsl \
