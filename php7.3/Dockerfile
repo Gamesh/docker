@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
         zlib1g-dev \
         zlibc \
     && mkdir -p /usr/src/php/ext/memcached \
-    && curl -Ls https://github.com/php-memcached-dev/php-memcached/archive/v3.1.5.tar.gz | tar xvz -C /usr/src/php/ext/ \
+    && curl -Ls https://github.com/php-memcached-dev/php-memcached/archive/v3.1.5.tar.gz | tar xz -C /usr/src/php/ext/ \
     && mv /usr/src/php/ext/php-memcached-3.1.5/* /usr/src/php/ext/memcached/ \
     && docker-php-ext-configure memcached \
     && docker-php-ext-configure intl \
@@ -54,5 +54,13 @@ RUN a2enmod rewrite \
   && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
   && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini" \
   && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+
+RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
+    && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
+    && mkdir -p /tmp/blackfire \
+    && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire \
+    && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get ('extension_dir');")/blackfire.so \
+    && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
+    && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
 WORKDIR $APACHE_DOCUMENT_ROOT
