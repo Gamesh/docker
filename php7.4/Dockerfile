@@ -1,6 +1,6 @@
 # Build: docker build -t gamesh/php:7.4 .
 # Publish: docker push gamesh/php:7.4
-FROM php:7.4-apache
+FROM php:8.0.1-apache
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html
 ENV PHP_DATE_TIMEZONE=Europe/Vilnius
