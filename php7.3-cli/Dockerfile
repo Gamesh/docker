@@ -6,6 +6,8 @@ ENV PHP_DATE_TIMEZONE=Europe/Vilnius
 ENV PHP_MEMORY_LIMIT=-1
 ENV COMPOSER_MEMORY_LIMIT=-1
 ENV COMPOSER_VERSION=2
+ENV PHP_UPLOAD_TMP_DIR=/tmp
+ENV PHP_SYS_TEMP_DIR=/tmp
 
 RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev libmemcached-dev cyrus-sasl-dev \
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
@@ -44,4 +46,6 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
   && echo "date.timezone = $PHP_DATE_TIMEZONE" >> "$PHP_INI_DIR/php.ini" \
   && echo "memory_limit = $PHP_MEMORY_LIMIT" >> "$PHP_INI_DIR/php.ini" \
   && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
+  && echo "upload_tmp_dir = $PHP_UPLOAD_TMP_DIR" >> "$PHP_INI_DIR/php.ini" \
+  && echo "sys_temp_dir = $PHP_SYS_TEMP_DIR" >> "$PHP_INI_DIR/php.ini" \
   && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini"

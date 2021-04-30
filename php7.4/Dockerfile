@@ -7,6 +7,8 @@ ENV PHP_DATE_TIMEZONE=Europe/Vilnius
 ENV PHP_MEMORY_LIMIT=1G
 ENV COMPOSER_MEMORY_LIMIT=-1
 ENV COMPOSER_VERSION=2
+ENV PHP_UPLOAD_TMP_DIR=/tmp
+ENV PHP_SYS_TEMP_DIR=/tmp
 
 RUN apt-get update && apt-get install -y \
         g++ \
@@ -52,6 +54,8 @@ RUN a2enmod rewrite \
   && echo "memory_limit = $PHP_MEMORY_LIMIT" >> "$PHP_INI_DIR/php.ini" \
   && echo 'upload_max_filesize = 50M' >> "$PHP_INI_DIR/php.ini" \
   && echo 'post_max_size = 80M' >> "$PHP_INI_DIR/php.ini" \
+  && echo "upload_tmp_dir = $PHP_UPLOAD_TMP_DIR" >> "$PHP_INI_DIR/php.ini" \
+  && echo "sys_temp_dir = $PHP_SYS_TEMP_DIR" >> "$PHP_INI_DIR/php.ini" \
   && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 
 RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
