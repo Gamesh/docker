@@ -14,13 +14,22 @@ RUN apt-get update && apt-get install -y \
         g++ \
         git \
         git-lfs \
+        libfreetype6 \
         libfreetype6-dev \
         libicu-dev \
+        libicu63 \
+        libjpeg62-turbo \
         libjpeg62-turbo-dev \
         libmemcached-dev \
+        libmemcached11 \
         libpng-dev \
+        libpng16-16 \
+        libwebp-dev \
+        libwebp6 \
         libxslt-dev \
+        libxslt1.1 \
         libzip-dev \
+        libzip4 \
         nano \
         openssh-client \
         unzip \
@@ -32,14 +41,29 @@ RUN apt-get update && apt-get install -y \
     && mv /usr/src/php/ext/php-memcached-3.1.5/* /usr/src/php/ext/memcached/ \
     && docker-php-ext-configure memcached \
     && docker-php-ext-configure intl \
-    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp-dir=/usr/include \
     && docker-php-ext-configure xsl \
     && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl memcached \
     && docker-php-source delete \
     && pecl clear-cache \
     && rm -rf /usr/src/php/ext/memcached \
-    && apt-get purge -y --auto-remove g++ make \
-    && apt-get clean && apt-get autoclean -y && apt-get autoremove -y
+    && apt-get purge -y \
+      g++ \
+      icu-devtools \
+      libfreetype6-dev \
+      libhashkit-dev \
+      libicu-dev \
+      libjpeg62-turbo-dev \
+      libmemcached-dev \
+      libpng-dev \
+      libsasl2-dev \
+      libstdc++-8-dev \
+      libwebp-dev \
+      libxslt-dev \
+      libzip-dev \
+      make \
+      zlib1g-dev \
+    && apt-get clean && apt-get autoclean -y
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
 
