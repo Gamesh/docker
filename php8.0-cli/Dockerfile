@@ -1,6 +1,6 @@
-# Build: docker build -t gamesh/php:7.4-cli .
-# Publish: docker push gamesh/php:7.4-cli
-FROM php:7.4-cli-alpine
+# Build: docker build -t gamesh/php:8.0-cli .
+# Publish: docker push gamesh/php:8.0-cli
+FROM php:8.0-cli-alpine
 
 ENV PHP_DATE_TIMEZONE=Europe/Vilnius
 ENV PHP_MEMORY_LIMIT=-1
@@ -38,7 +38,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
     && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini \
     && docker-php-source delete \
     && pecl clear-cache \
-    && rm -rf /usr/share/php7 /tmp/* \
+    && rm -rf /usr/share/php8 /tmp/* \
     && apk del --purge buildDeps .phpize-deps
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
