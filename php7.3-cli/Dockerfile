@@ -19,6 +19,8 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
         libjpeg-turbo-dev \
         libmemcached-libs \
         libpng-dev \
+        libwebp-dev \
+        libwebp \
         libxslt-dev \
         libzip-dev \
         nano \
@@ -32,7 +34,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-webp-dir=/usr/include \
     && docker-php-ext-configure xsl \
-    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl \
+    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl soap \
     && pecl install xdebug memcached \
     && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini \
     && docker-php-source delete \

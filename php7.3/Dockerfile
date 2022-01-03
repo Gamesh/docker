@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
         libfreetype6 \
         libfreetype6-dev \
         libicu-dev \
-        libicu63 \
+        libicu67 \
         libjpeg62-turbo \
         libjpeg62-turbo-dev \
         libmemcached-dev \
@@ -35,7 +35,6 @@ RUN apt-get update && apt-get install -y \
         unzip \
         zlib1g \
         zlib1g-dev \
-        zlibc \
     && mkdir -p /usr/src/php/ext/memcached \
     && curl -Ls https://github.com/php-memcached-dev/php-memcached/archive/v3.1.5.tar.gz | tar xz -C /usr/src/php/ext/ \
     && mv /usr/src/php/ext/php-memcached-3.1.5/* /usr/src/php/ext/memcached/ \
@@ -43,7 +42,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-webp-dir=/usr/include \
     && docker-php-ext-configure xsl \
-    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl memcached \
+    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl memcached soap \
     && pecl install xdebug \
     && docker-php-source delete \
     && pecl clear-cache \
@@ -57,7 +56,7 @@ RUN apt-get update && apt-get install -y \
       libmemcached-dev \
       libpng-dev \
       libsasl2-dev \
-      libstdc++-8-dev \
+      libstdc++-*-dev \
       libwebp-dev \
       libxslt-dev \
       libzip-dev \

@@ -42,7 +42,7 @@ RUN apt update && apt install -y \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp=/usr/include \
     && docker-php-ext-configure xsl \
-    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl memcached \
+    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl memcached soap \
     && docker-php-source delete \
     && rm -rf /usr/src/php/ext/memcached /tmp/pear/cache \
     && apt-get purge -y \

@@ -33,7 +33,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp=/usr/include \
     && docker-php-ext-configure xsl \
-    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl \
+    && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl soap \
     && pecl install xdebug memcached \
     && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini \
     && docker-php-source delete \
