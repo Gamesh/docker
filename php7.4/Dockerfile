@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp=/usr/include \
     && docker-php-ext-configure xsl \
     && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl memcached soap \
+    && pecl install xdebug \
     && docker-php-source delete \
     && rm -rf /usr/src/php/ext/memcached /tmp/pear/cache \
     && apt-get purge -y \
@@ -62,6 +63,8 @@ RUN apt-get update && apt-get install -y \
       make \
       zlib1g-dev \
     && apt-get clean && apt-get autoclean -y
+
+ADD --link xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
 
