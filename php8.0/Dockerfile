@@ -63,7 +63,7 @@ RUN apt update && apt install -y \
       zlib1g-dev \
     && apt-get clean && apt-get autoclean -y
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
   && . /root/.bashrc \

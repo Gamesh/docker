@@ -1,5 +1,6 @@
 # Build: docker build -t gamesh/php:7.4-cli .
 # Publish: docker push gamesh/php:7.4-cli
+FROM composer:2 as composer
 FROM php:7.4-cli-alpine
 
 ENV PHP_DATE_TIMEZONE=Europe/Vilnius
@@ -41,8 +42,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
     && rm -rf /usr/share/php7 /tmp/* \
     && apk del --purge buildDeps .phpize-deps
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
-
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
   && echo "date.timezone = $PHP_DATE_TIMEZONE" >> "$PHP_INI_DIR/php.ini" \

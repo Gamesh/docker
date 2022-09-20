@@ -1,12 +1,11 @@
 # Build: docker build -t gamesh/php:7.4 .
 # Publish: docker push gamesh/php:7.4
+FROM composer:2 as composer
 FROM php:7.4-apache
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html
 ENV PHP_DATE_TIMEZONE=Europe/Vilnius
 ENV PHP_MEMORY_LIMIT=1G
-ENV COMPOSER_MEMORY_LIMIT=-1
-ENV COMPOSER_VERSION=2
 ENV PHP_UPLOAD_TMP_DIR=/tmp
 ENV PHP_SYS_TEMP_DIR=/tmp
 
@@ -64,9 +63,9 @@ RUN apt-get update && apt-get install -y \
       zlib1g-dev \
     && apt-get clean && apt-get autoclean -y
 
-ADD --link xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+ADD xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --$COMPOSER_VERSION
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
   && . /root/.bashrc \
