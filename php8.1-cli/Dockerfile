@@ -21,6 +21,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
         libpng-dev \
         libxslt-dev \
         libzip-dev \
+        libwebp-dev \
         nano \
         nodejs \
         openssh-client \
@@ -30,7 +31,7 @@ RUN apk add --no-cache --update --virtual buildDeps g++ make autoconf zlib-dev l
         zlib \
         zlib-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp-dir=/usr/include \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp=/usr/include \
     && docker-php-ext-configure xsl \
     && docker-php-ext-install -j$(nproc) pdo_mysql exif intl gd opcache zip xsl soap \
     && pecl install xdebug memcached \
